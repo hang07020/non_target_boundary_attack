@@ -2,7 +2,7 @@
 
 This repository contains modified code from the original [Boundary Attack (ResNet)](https://github.com/greentfrapp/boundary-attack) to implement **Non-Target Boundary Attack**.  
 
-Overlapping parts with the original code are not commented. The repository includes multiple experiments using different initial images for Non-Target Boundary Attack.
+The repository includes multiple experiments using different initial images for Non-Target Boundary Attack.
 
 ---
 
@@ -12,13 +12,21 @@ Overlapping parts with the original code are not commented. The repository inclu
 |-----------|-------------|
 | `noise_nontarget_csv.py` | Initial image is noise. Performs Non-Target Boundary Attack 2000 times. |
 | `mean_nontarget_csv.py` | Initial image is a uniform image with the mean of the target image. Non-Target Boundary Attack 2000 times. |
-| `upgreen_mean_nontarget_csv.py` | Initial image is a uniform image with the mean of the target image and enhanced green channel. Non-Target Boundary Attack 2000 times. |
-| `downgreen_mean_nontarget_csv.py` | Initial image is a uniform image with the mean of the target image and reduced green channel. Non-Target Boundary Attack 2000 times. |
 | `red_nontarget_csv.py` | Initial image is a red uniform image. Non-Target Boundary Attack 2000 times. |
 | `green_nontarget_csv.py` | Initial image is a green uniform image. Non-Target Boundary Attack 2000 times. |
 | `blue_nontarget_csv.py` | Initial image is a blue uniform image. Non-Target Boundary Attack 2000 times. |
+| `upgreen_mean_nontarget_csv.py` | Initial image is a uniform image with the mean of the target image and enhanced green channel. Non-Target Boundary Attack 2000 times. |
+| `downgreen_mean_nontarget_csv.py` | Initial image is a uniform image with the mean of the target image and reduced green channel. Non-Target Boundary Attack 2000 times. |
+
 
 ---
+## Installation
+
+To run the scripts, you need the following Python packages. You can install them via pip:
+
+```bash
+pip install numpy matplotlib keras Pillow pandas opencv-python
+```
 
 ## How to Run
 
