@@ -102,12 +102,11 @@ def get_sc_img(initial_sample):
 
 	image_array = np.array(initial_sample)
 
-	# 各チャンネル（R、G、B）の平均を計算
-	red = np.mean(image_array[:, :, 0])  # チャンネル0は赤
-	green = np.mean(image_array[:, :, 1])  # チャンネル1は緑
-	blue = np.mean(image_array[:, :, 2])  # チャンネル2は青
+	# Calculate RGB average
+	red = np.mean(image_array[:, :, 0])  
+	green = np.mean(image_array[:, :, 1]) 
+	blue = np.mean(image_array[:, :, 2])  
 
-	# 平均のRGB値を0から255の範囲にスケーリングし、整数に変換
 	red = int(np.clip(red, 0, 255))
 	green = int(np.clip(green, 0, 255))
 	blue = int(np.clip(blue, 0, 255))
@@ -121,8 +120,8 @@ def get_sc_img(initial_sample):
 def boundary_attack():
 	classifier = ResNet50(weights='imagenet')
 	input_image = image.load_img('images/original/awkward_moment_seal.png', target_size=(224, 224))
-	initial_sample = preprocess(input_image) #元画像
-	target_sample = preprocess(get_sc_img(input_image)) #目標
+	initial_sample = preprocess(input_image) #initial_image
+	target_sample = preprocess(get_sc_img(input_image)) #target_image
 	
 	results = pd.DataFrame(columns=['Step', 'MSE', 'RMSE'])
 
@@ -230,4 +229,5 @@ def boundary_attack():
 	results.to_csv(csv_file_path, index=False)
 
 if __name__ == "__main__":
+
 	boundary_attack()
