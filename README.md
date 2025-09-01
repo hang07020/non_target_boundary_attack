@@ -28,7 +28,6 @@ Run with Python:
 python noise_nontarget_csv.py
 ```
 
-If it does not work, try the source code in the `worked_program` folder.
 
 ### Changing the Target Image
 
