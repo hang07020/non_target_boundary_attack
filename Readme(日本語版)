@@ -1,0 +1,74 @@
+# Non-Target Boundary Attack プロジェクト
+
+## インストール
+
+スクリプトを実行するには以下のPythonパッケージが必要です。pipでインストールできます。
+
+```bash
+pip install numpy matplotlib keras Pillow pandas opencv-python
+```
+
+---
+
+## 概要
+
+本リポジトリは、元のソースコード [boundary-attack-resnet.py](https://github.com/greentfrapp/boundary-attack) を改造した non-target boundary attack の実験用コードです。元のコードと重複する部分はコメントしていません。
+
+### ソースコードファイルの説明
+
+- **noise_nontarget_csv.py**：初期画像をノイズ画像として 2000 回の non-target boundary attack を実行  
+- **mean_nontarget_csv.py**：初期画像を目標画像の平均値の単色画像として 2000 回の non-target boundary attack を実行  
+- **upgreen_mean_nontarget_csv.py**：初期画像を目標画像の平均値で緑を強調した単色画像として 2000 回実行  
+- **downgreen_mean_nontarget_csv.py**：初期画像を目標画像の平均値で緑を抑えた単色画像として 2000 回実行  
+- **red_nontarget_csv.py**：初期画像を赤単色画像として 2000 回実行  
+- **green_nontarget_csv.py**：初期画像を緑単色画像として 2000 回実行  
+- **blue_nontarget_csv.py**：初期画像を青単色画像として 2000 回実行  
+
+---
+
+## 実行方法
+
+Pythonでスクリプトを実行します：
+
+```bash
+python noise_nontarget_csv.py
+```
+
+うまく動作しない場合は、`worked program` フォルダ内のスクリプトを試してください。  
+目標画像を変更する場合は、`boundary_attack()` 関数内の `target_sample` 変数のパスを変更します：
+
+```python
+target_sample = preprocess('images/original/seal.png')
+```
+
+---
+
+## 元のソースコードとの改造点
+
+### `noise_nontarget_csv.py` の場合
+
+1. target boundary attack から non-target boundary attack に変更  
+2. MSEをCSVファイルに記録
+
+### その他のスクリプト (mean_nontarget_csv.py, upgreen_mean_nontarget_csv.py など)
+
+1. target boundary attack から non-target boundary attack に変更  
+2. MSEをCSVファイルに記録  
+3. `get_sc_img(initial_sample)` 関数を追加し、初期画像の単色画像を生成  
+4. 境界線まで最初の移動部分 (`# Move first step to the boundary`) を変更
+
+---
+
+## 現在の問題点
+
+- 乱数を使用しているため、Boundary Attack が収束しない場合があります  
+- 元の target boundary attack を改造したコードであり、まだ解明されていないバグが存在する可能性があります  
+- 問題が解決されるまで、別の non-target boundary attack コードを利用することを推奨します
+
+---
+
+## 開発者
+
+Tan Yee Hang（タン・イーハン）  
+作成日：2024/02/14  
+連絡先：hang07020@gmail.com
