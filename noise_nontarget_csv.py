@@ -119,7 +119,6 @@ def boundary_attack():
 	delta = 0.1
 
 	# Move first step to the boundary
-	#ここのinitial_sampleはノイズ画像，target_sampleが動物の画像
 	while True:
 		trial_sample = adversarial_sample + forward_perturbation(epsilon * get_diff(adversarial_sample, target_sample), adversarial_sample, target_sample)
 		prediction = classifier.predict(trial_sample.reshape(1, 224, 224, 3))
@@ -196,4 +195,5 @@ def boundary_attack():
 	results.to_csv(csv_file_path, index=False)
 
 if __name__ == "__main__":
+
 	boundary_attack()
