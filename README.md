@@ -1,2 +1,70 @@
-# non_target_boundary_attack
-This repository contains the code for a graduation thesis on the application of Boundary Attack in the field of image recognition. The project utilizes Python and Keras to generate attacks against a ResNet50 model, performing image preprocessing, calculating differences, and evaluating adversarial samples from red/green/blue images and others.
+# Non-Target Boundary Attack Projects
+
+This repository contains modified code from the original [Boundary Attack (ResNet)](https://github.com/greentfrapp/boundary-attack) to implement **Non-Target Boundary Attack**.  
+
+Overlapping parts with the original code are not commented. The repository includes multiple experiments using different initial images for Non-Target Boundary Attack.
+
+---
+
+## File Descriptions
+
+| File Name | Description |
+|-----------|-------------|
+| `noise_nontarget_csv.py` | Initial image is noise. Performs Non-Target Boundary Attack 2000 times. |
+| `mean_nontarget_csv.py` | Initial image is a uniform image with the mean of the target image. Non-Target Boundary Attack 2000 times. |
+| `upgreen_mean_nontarget_csv.py` | Initial image is a uniform image with the mean of the target image and enhanced green channel. Non-Target Boundary Attack 2000 times. |
+| `downgreen_mean_nontarget_csv.py` | Initial image is a uniform image with the mean of the target image and reduced green channel. Non-Target Boundary Attack 2000 times. |
+| `red_nontarget_csv.py` | Initial image is a red uniform image. Non-Target Boundary Attack 2000 times. |
+| `green_nontarget_csv.py` | Initial image is a green uniform image. Non-Target Boundary Attack 2000 times. |
+| `blue_nontarget_csv.py` | Initial image is a blue uniform image. Non-Target Boundary Attack 2000 times. |
+
+---
+
+## How to Run
+
+Run with Python:
+
+```bash
+python noise_nontarget_csv.py
+```
+
+If it does not work, try the source code in the `worked_program` folder.
+
+### Changing the Target Image
+
+Modify the `target_sample` variable in the `boundary_attack()` function:
+
+```python
+target_sample = preprocess('images/original/seal.png')
+```
+
+---
+
+## Major Modifications from Original Code
+
+### `noise_nontarget_csv.py`
+1. Changed from Target Boundary Attack → Non-Target Boundary Attack  
+2. MSE is recorded in a CSV file  
+
+### Other Files (`mean_nontarget_csv.py`, `upgreen_mean_nontarget_csv.py`, etc.)
+1. Changed from Target Boundary Attack → Non-Target Boundary Attack  
+2. MSE is recorded in a CSV file  
+3. Added `get_sc_img(initial_sample)` function to generate uniform initial images  
+4. Modified the "Move first step to the boundary" section
+
+---
+
+## Current Issues
+
+- Due to randomness, the Boundary Attack may fail to converge in some cases.  
+- This code is modified from the Target Boundary Attack, and may contain unresolved bugs.  
+- Until resolved, it is recommended to consider using alternative Non-Target Boundary Attack implementations.
+
+---
+
+## Author
+
+- Tan Yee Hang  
+- Created: 2024/02/14  
+- Contact: hang07020@gmail.com
+
