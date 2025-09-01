@@ -100,13 +100,7 @@ def get_diff(sample_1, sample_2):
 
 def get_sc_img(initial_sample):#初期画像の単色画像を生成する
 
-	# 各チャンネル（R、G、B）の平均を計算 
-	#image_array = np.array(initial_sample)
-	#red = np.mean(image_array[:, :, 0])  # チャンネル0は赤
-	#green = np.mean(image_array[:, :, 1])  # チャンネル1は緑
-	#blue = np.mean(image_array[:, :, 2])  # チャンネル2は青
-
-	#RGBの数値がここに変更
+	#RGBの数値
 	red = 0
 	green = 0
 	blue = 255
@@ -120,8 +114,8 @@ def get_sc_img(initial_sample):#初期画像の単色画像を生成する
 def boundary_attack():
 	classifier = ResNet50(weights='imagenet')
 	input_image = image.load_img('images/original/awkward_moment_seal.png', target_size=(224, 224))
-	initial_sample = preprocess(input_image) #元画像
-	target_sample = preprocess(get_sc_img(input_image)) #目標
+	initial_sample = preprocess(input_image) #iniital_image
+	target_sample = preprocess(get_sc_img(input_image)) #target_image
 	
 	results = pd.DataFrame(columns=['Step', 'MSE', 'RMSE'])
 
@@ -139,7 +133,6 @@ def boundary_attack():
 	delta = 0.1
 
 	# Move first step to the boundary 
-	#ここのinitial_sampleは動物の画像，target_sampleが単色画像
 	while True:
 		trial_sample = adversarial_sample + forward_perturbation(epsilon * get_diff(adversarial_sample, target_sample), adversarial_sample, target_sample)
 		prediction = classifier.predict(trial_sample.reshape(1, 224, 224, 3))
@@ -230,4 +223,5 @@ def boundary_attack():
 	results.to_csv(csv_file_path, index=False)
 
 if __name__ == "__main__":
+
 	boundary_attack()
