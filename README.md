@@ -69,6 +69,27 @@ target_sample = preprocess('images/original/seal.png')
 
 ---
 
+### Experimental Results
+
+To analyze the efficiency of the Non-Target Boundary Attack, the Mean Squared Error (MSE) between the adversarial example and the original image was measured at various steps during the attack process. The experiment was conducted using different types of initial images:
+
+* **Noise**: A randomly generated noise image.
+* **Mean**: A solid color image representing the average color of the target image.
+* **Red, Green, Blue**: Solid color images.
+
+The results are plotted in the graph below:
+
+![Convergence Analysis of Non-Target Boundary Attacks with Various Initial Images](graph.png)
+
+#### Analysis
+The graph shows the convergence rate for each initial image type. A faster decrease in MSE indicates a more efficient attack starting point.
+
+* **Most Efficient**: The **mean** color image (yellow line) consistently shows the lowest MSE, suggesting it is the most efficient starting point for the attack. It converges the fastest, requiring the least amount of perturbation to find the decision boundary.
+* **Least Efficient**: The **noise** image (gray line) consistently has the highest MSE, indicating it is the least efficient starting point.
+* **Color Images**: The solid **red**, **green**, and **blue** images perform similarly to each other, falling between the efficiency of the mean and noise images.
+
+This suggests that an initial image that is closer in statistical properties (like the average color) to the target image allows the boundary attack algorithm to find a misclassification with less perturbation.
+
 ## Author
 
 - Tan Yee Hang  
