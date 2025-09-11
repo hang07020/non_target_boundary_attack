@@ -96,9 +96,3 @@ The graph shows the convergence rate for each initial image type. A faster decre
 
 This suggests that an initial image that is closer in statistical properties (like the average color) to the target image allows the boundary attack algorithm to find a misclassification with less perturbation.
 
-## Author
-
-- Tan Yee Hang  
-- Created: 2024/02/14  
-- Contact: hang07020@gmail.com
-
