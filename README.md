@@ -61,6 +61,12 @@ target_sample = preprocess('images/original/seal.png')
 
 ---
 
+## Technology Stack
+- **Language**: Python
+- **Deep Learning Framework**: TensorFlow / Keras
+- **Image Processing**: Pillow
+- **Numerical Computation**: NumPy
+
 ## Current Issues
 
 - Due to randomness, the Boundary Attack may fail to converge in some cases.  
